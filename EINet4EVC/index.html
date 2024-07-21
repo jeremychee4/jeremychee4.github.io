@@ -23,15 +23,15 @@
     </section>
 
 <section class="main-content">
-    <h1 id=""><center>PAVITS: Exploring Prosody-aware VITS for End-to-End Emotional Voice Conversion</center></h1>
-    <center> Tianhua Qi<sup>1,2</sup>, Wenming Zheng<sup>1,2*</sup>, Cheng Lu<sup>1,2</sup>, Yuan Zong<sup>1,2</sup>, Hailun Lian<sup>1</sup></center>
+    <h1 id=""><center>Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity</center></h1>
+    <center> Tianhua Qi<sup>1,2</sup>, Shiyan Wang<sup>1,2</sup>, Cheng Lu<sup>1,2</sup>, Yan Zhao<sup>1</sup>, Yuan Zong<sup>1,2</sup>, Wenming Zheng<sup>1,2*</sup></center>
     <center> <sup>1</sup> Key Laboratory of Child Development and Learning Science (Southeast University), Ministry of Education, Nanjing 210096, China</center>
     <center> <sup>2</sup> School of Biological Science and Medical Engineering, Southeast University, China</center>
 
 
 <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
 <p> 
-In this paper, we propose Prosody-aware VITS (PAVITS) for emotional voice conversion (EVC), aiming to achieve two major objectives of EVC: high content naturalness and high emotional naturalness, which are crucial for meeting the demands of human perception. To improve the content naturalness of converted audio, we have developed an end-to-end EVC architecture inspired by the high audio quality of VITS. By seamlessly integrating an acoustic converter and vocoder, we effectively address the common issue of mismatch between emotional prosodic training and run-time conversion that is prevalent in existing EVC models. To further enhance the emotional naturalness, we introduce an emotion descriptor to model the subtle prosodic variations of different speech emotions, a prosody predictor to predict prosodic features from text based on the provided emotion label. Among them, we introduce a prosody alignment loss to establish a connection between latent prosodic features from two distinct modalities, ensuring effective training. Experimental results show that the performance of PAVITS is superior to the state-of-the-art EVC methods.
+Realistic emotional voice conversion (EVC) aims to enhance emotional diversity of converted audios, making the synthesized voices more authentic and natural. To this end, we propose Emotional Intensity-aware Network (EINet), dynamically adjusting intonation and rhythm by incorporating controllable emotional intensity. To better capture nuances in emotional intensity, we go beyond mere distance measurements among acoustic features. Instead, an emotion evaluator is utilized to precisely quantify speaker's emotional state. By employing an intensity mapper, intensity pseudo-labels are obtained to bridge the gap between emotional speech intensity modeling and runtime conversion. To ensure high speech quality while retaining controllability, an emotion renderer is used for combining linguistic features smoothly with manipulated emotional features at frame level. Furthermore, we employ a duration predictor to facilitate adaptive prediction of rhythm changes condition on specifying intensity value. Experimental results show EINet's superior performance in naturalness and diversity of emotional expression compared to state-of-the-art EVC methods.
  </p>
 	<center><img src='fig/model.jpg' width=800px></center>
 <br><br>
