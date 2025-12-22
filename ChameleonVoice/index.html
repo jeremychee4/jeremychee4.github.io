@@ -1,0 +1,258 @@
+<!DOCTYPE hvtml>
+<!-- saved from url=(0033)https://accentspeech.github.io/AccentSpeech// -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<title>PAVITS</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="TODO: title">
+<meta property="og:locale" content="en_US">
+
+<link rel="canonical" href="https://accentspeech.github.io/AccentSpeech//">
+<meta property="og:url" content="https://accentspeech.github.io/AccentSpeech//">
+<meta name="twitter:card" content="summary">
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+    <section class="page-header">
+      
+    </section>
+
+<section class="main-content">
+    <h1 id=""><center>ChameleonVoice: A Contextual Prosody Perception Network for Emotional Voice Conversion</center></h1>
+    <center> Tianhua Qi<sup>1,2</sup>, Cheng Lu<sup>1,2</sup>, Yuan Zong<sup>1,2</sup>, Wenming Zheng<sup>1,2</sup>, Björn W. Schuller<sup>3,4</sup></center>
+    <center> <sup>1</sup> School of Biological Science and Medical Engineering, Southeast University, China</center>
+    <center> <sup>2</sup> Key Laboratory of Child Development and Learning Science (Ministry of Education), China</center>
+    <center> <sup>3</sup> Chair of Health Informatics (CHI), Technical University of Munich, Germany</center>
+    <center> <sup>4</sup> Group on Language, Audio, & Music (GLAM), Imperial College London, U.K.</center>
+
+
+<h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+<p> 
+	Emotional voice conversion (EVC) has progressed rapidly, yet generating speech with natural prosody remains a core unsolved problem. 
+	The primary reason is that existing approaches rely heavily on static emotion categories, pseudo-labeled prosodic attributes, or reference-driven transfer mechanisms, which fail to model emotional prosody in a contextually aligned manner.
+	Consequently, current systems often exhibit over-templated rhythmic patterns, misplaced emphasis, and limited perceptual naturalness.
+	To address these challenges, we propose ChameleonVoice, a contextual prosody perception network that models emotional prosody as a temporally evolving process jointly shaped by linguistic structure and continuous affective state. The framework incorporates a contextual prosody perception mechanism that learns how rhythm, stress, and intonation unfold across the utterance based on semantic cues, and integrates valence–arousal emotion descriptors to capture intra-category variability and support fine-grained prosody modulation without requiring additional attributes or reference utterances. This design enables ChameleonVoice to adaptively reshape prosodic contours while preserving intelligibility and speaker identity.
+	Comprehensive experiments across multiple emotions, speakers, and languages demonstrate that ChameleonVoice substantially improves prosodic naturalness, emotional expressiveness, and contextual coherence over state-of-the-art EVC systems.
+ </p>
+	<center><img src='fig/model.jpg' width=800px></center>
+<br><br>
+
+<h2>2. Experimental Results<a name="exp result"></a></h2>
+
+<table>
+  <tbody>
+    <tr>
+	<td style="text-align: center; width: 100px;" rowspan=1><strong>Source<strong></td>
+        <td style="text-align: center; width: 100px;" rowspan=1><strong>Emovox<strong></td>
+        <td style="text-align: center; width: 100px;" rowspan=1><strong>Mixed-EVC<strong></td>
+        <td style="text-align: center; width: 100px;" rowspan=1><strong>ZEST<strong></td>
+        <td style="text-align: center; width: 100px;" rowspan=1><strong>PAVITS<strong></td>
+        <td style="text-align: center; width: 100px;" rowspan=1><strong>ChameleonVoice (proposed)<strong></td>
+	<td style="text-align: center; width: 100px;" rowspan=1><strong>Target<strong></td>
+	<td style="text-align: center; width: 100px;" rowspan=1><strong>Text<strong></td>
+    </tr>
+		
+    <tr>
+	    <th colspan=8 style="font-size:80%" centering><h8>Neutral-to-Angry</th>
+    </tr>
+    <tr>
+        <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+        <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/cyclegan_0009_000351.wav"></audio></td>
+        <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/stargan_0009_000351.wav"></audio></td>
+        <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/vits_0009_000351.wav"></audio></td>
+        <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_fl_0009_000351.wav"></audio></td>
+	<td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_vl_0009_000351.wav"></audio></td>
+	<td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000351.wav"></audio></td>
+    	<td style="font-size:95%">不就是你嘛，为什么要偷笑来(English: Isn't it just you? Why are you sneaking a laugh?)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000003.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/cyclegan_0009_000353.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/stargan_0009_000353.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/vits_0009_000353.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_fl_0009_000353.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_vl_0009_000353.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000353.wav"></audio></td>
+	  <td style="font-size:95%">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000011.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/cyclegan_0009_000361.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/stargan_0009_000361.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/vits_0009_000361.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_fl_0009_000361.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_vl_0009_000361.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000361.wav"></audio></td>
+	  <td style="font-size:95%">Who is been repeating all that hard stuff to you?</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/cyclegan_0009_000363.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/stargan_0009_000363.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/vits_0009_000363.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_fl_0009_000363.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2ang/pavits_vl_0009_000363.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000363.wav"></audio></td>
+	  <td style="font-size:95%">She is now choosing skirt to wear.</td>
+    </tr>
+		
+    <tr>
+    	<th colspan=8 style="font-size:80%" centering><h8>Neutral-to-Happy</th>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/cyclegan_0009_000701.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/stargan_0009_000701.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/vits_0009_000701.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_fl_0009_000701.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_vl_0009_000701.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000701.wav"></audio></td>
+	  <td style="font-size:95%">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000003.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/cyclegan_0009_000703.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/stargan_0009_000703.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/vits_0009_000703.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_fl_0009_000703.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_vl_0009_000703.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000703.wav"></audio></td>
+	  <td style="font-size:95%">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000011.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/cyclegan_0009_000711.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/stargan_0009_000711.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/vits_0009_000711.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_fl_0009_000711.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_vl_0009_000711.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000711.wav"></audio></td>
+	  <td style="font-size:95%">I think it'll encourage me.</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/cyclegan_0009_000713.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/stargan_0009_000713.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/vits_0009_000713.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_fl_0009_000713.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2hap/pavits_vl_0009_000713.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_000713.wav"></audio></td>
+	  <td style="font-size:95%">The name really is the aged aged man.</td>
+    </tr>
+		
+    <tr>
+    	<th colspan=8 style="font-size:80%" centering><h8>Neutral-to-Sad</th>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/cyclegan_0009_001051.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/stargan_0009_001051.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/vits_0009_001051.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_fl_0009_001051.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_vl_0009_001051.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001051.wav"></audio></td>
+	  <td style="font-size:95%">沙尘暴好像给每个人都带来了麻烦！(English: The sandstorm seems to have brought trouble to everyone!)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000003.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/cyclegan_0009_001053.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/stargan_0009_001053.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/vits_0009_001053.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_fl_0009_001053.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_vl_0009_001053.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001053.wav"></audio></td>
+	  <td style="font-size:95%">他一定是一眼就被你迷住了。(English: He must have been captivated by you at first sight.)</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000011.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/cyclegan_0009_001061.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/stargan_0009_001061.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/vits_0009_001061.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_fl_0009_001061.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_vl_0009_001061.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001061.wav"></audio></td>
+	  <td style="font-size:95%">She is now choosing skirt to wear.</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/cyclegan_0009_001063.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/stargan_0009_001063.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/vits_0009_001063.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_fl_0009_001063.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sad/pavits_vl_0009_001063.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001063.wav"></audio></td>
+	  <td style="font-size:95%">Who is been repeating all that hard stuff to you?</td>
+    </tr>
+		
+    <tr>
+    	<th colspan=8 style="font-size:80%" centering><h8>Neutral-to-Surprise</th>
+    </tr>
+    <tr>
+        <!-- <td style="text-align: center; width: 150px;" rowspan=1><strong>Audio<strong></td> -->
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/cyclegan_0009_001401.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/stargan_0009_001401.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/vits_0009_001401.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_fl_0009_001401.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_vl_0009_001401.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001401.wav"></audio></td>
+	  <td style="font-size:95%">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+        <!-- <td style="text-align: center; width: 150px;" rowspan=1><strong>Audio<strong></td> -->
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000003.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/cyclegan_0009_001403.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/stargan_0009_001403.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/vits_0009_001403.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_fl_0009_001403.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_vl_0009_001403.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001403.wav"></audio></td>
+	  <td style="font-size:95%">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+    </tr>
+    <tr>
+        <!-- <td style="text-align: center; width: 150px;" rowspan=1><strong>Audio<strong></td> -->
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000011.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/cyclegan_0009_001411.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/stargan_0009_001411.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/vits_0009_001411.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_fl_0009_001411.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_vl_0009_001411.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001411.wav"></audio></td>
+	  <td style="font-size:95%">She had said, so that one could keep up a conversation!</td>
+    </tr>
+    <tr>
+        <!-- <td style="text-align: center; width: 150px;" rowspan=1><strong>Audio<strong></td> -->
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/cyclegan_0009_001413.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/stargan_0009_001413.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/vits_0009_001413.wav"></audio></td>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_fl_0009_001413.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/neu2sur/pavits_vl_0009_001413.wav"></audio></td>
+	  <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/target/0009_001413.wav"></audio></td>
+	  <td style="font-size:95%">You are not a runaway, who are you?</td>
+    </tr>
+		
+    </tbody>
+</table>
+
+
+<h3>Visualization of converted waveform.<a name="Visualization"></a></h3>
+<p> 
+  Naturalistic EVC relies on precise and context-aware prosodic manipulation. To this end, we further analyze by integrating the transcribed text of each utterance to interpret the resulting variations in pitch tracks and energy contours. This detailed visualization provides qualitative evidence of the contextual perception capability of ChameleonVoice, demonstrating how dynamic prosodic adjustments are localized and executed based on linguistic content.
+ </p>
+
+  <center><img src='fig/spec.jpg' width=800px></center>
+<br><br>
+
+
+      <footer class="site-footer">
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+</body></html>
