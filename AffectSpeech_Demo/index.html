@@ -1,0 +1,439 @@
+<!DOCTYPE hvtml>
+<!-- saved from url=(0033)https://accentspeech.github.io/AccentSpeech// -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<title>ChameleonVoice</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="TODO: title">
+<meta property="og:locale" content="en_US">
+
+<link rel="canonical" href="https://accentspeech.github.io/AccentSpeech//">
+<meta property="og:url" content="https://accentspeech.github.io/AccentSpeech//">
+<meta name="twitter:card" content="summary">
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+    <section class="page-header">
+      
+    </section>
+
+<section class="main-content">
+    <h1 id=""><center>AffectSpeech: A Large-Scale Emotional Speech Dataset with Fine-Grained Textual Descriptions for Speech Emotion Captioning and Synthesis</center></h1>
+    <center> Tianhua Qi<sup>1,2</sup>, Wenming Zheng<sup>1,2</sup>, Björn W. Schuller<sup>3,4</sup>, Zhaojie Luo<sup>1,5</sup>, Haizhou Li<sup>5,6</sup></center>
+    <center> <sup>1</sup> School of Biological Science and Medical Engineering, Southeast University, China</center>
+    <center> <sup>2</sup> Key Laboratory of Child Development and Learning Science (Southeast University), Ministry of Education, China</center>
+    <center> <sup>3</sup> Chair of Health Informatics (CHI), Technical University of Munich, Germany</center>
+    <center> <sup>4</sup> Group on Language, Audio, & Music (GLAM), Imperial College London, U.K.</center>
+    <center> <sup>5</sup> Shenzhen Loop Area Institute (SLAI), China</center>
+    <center> <sup>6</sup> Shenzhen Research Institute of Big Data, School of Artificial Intelligence, The Chinese University of Hong Kong, China</center>
+
+
+<h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+<p> 
+	Emotion is essential in spoken communication, yet most existing frameworks in speech emotion modeling rely on predefined categories or low-dimensional continuous attributes, which offer limited expressive capacity.
+Recent advances in speech emotion captioning and synthesis have shown that textual  descriptions provide a more flexible and interpretable alternative for representing affective characteristics in speech.
+However, progress in this direction is hindered by the lack of an emotional speech dataset aligned with reliable and fine-grained natural language annotations.
+To tackle this, we introduce AffectSpeech, a large-scale corpus of human-recorded speech enriched with structured descriptions for fine-grained emotion analysis and generation.
+Each utterance is characterized across six complementary dimensions, including sentiment polarity, open-vocabulary emotion captions, intensity level,  prosodic attributes, prominent segments, and semantic content, enabling multi-granular modeling of vocal expression.
+To balance annotation quality and scalability, we adopt a human–LLM collaborative annotation pipeline that integrates algorithmic pre-labeling, multi-LLM description generation, and human-in-the-loop verification.
+Furthermore, these annotations are reformulated into diverse descriptive styles to enhance linguistic diversity and reduce stylistic bias in downstream modeling.
+Experimental results on speech emotion captioning and synthesis demonstrate that models trained on AffectSpeech consistently achieve superior performance across multiple evaluation settings.
+ </p>
+	<center><img src='fig/framework.jpg' width=1280px></center>
+<br><br>
+
+<h2>2. Demo of AffectSpeech Dataset (random text style)<a name="exp result"></a></h2>
+
+<table>
+  <tbody>
+    <tr>
+	<td style="text-align: center; width: 100px;" rowspan=1><strong>Source Speech<strong></td>
+	<td style="text-align: center; width: 200px;" rowspan=1><strong>Transcript<strong></td>
+  <td style="text-align: center; width: 650px;" rowspan=1><strong>Descriptions for Speech Emotion Captioning task<strong></td>
+  <td style="text-align: center; width: 650px;" rowspan=1><strong>Instructions for Textual Prompt-based Emotional Speech Synthesis task<strong></td>
+
+    </tr>
+		
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/emotion_datasetMEADW026audiohappylevel_1006.wav"></audio></td>
+	  <td style="font-size:95%">Tim takes Sheila to see movies twice a week.</td>
+      <td style="font-size:95%">The speech is a cheerful and energetic expression of a pleasant routine. It has a positive emotional tone, reflecting happiness. The high emotional intensity is conveyed through a high pitch and loudness, especially in the early part. The content and delivery emphasize a warm and enthusiastic tone, highlighting the positive relationship and activity.</td>
+      <td style="font-size:95%">The speech is a cheerful and energetic expression of a pleasant routine. It has a positive emotional tone, reflecting happiness. The high emotional intensity is conveyed through a high pitch and loudness, especially in the early part. The content and delivery emphasize a warm and enthusiastic tone, highlighting the positive relationship and activity: “Tim takes Sheila to see movies twice a week."</td>
+    </tr>
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/esd_0020_001200.wav"></audio></td>
+	  <td style="font-size:95%">I hope you enjoyed yourself.</td>
+      <td style="font-size:95%">Acoustic analysis reveals that F0 (pitch) and amplitude (volume) are notably reduced, while articulation rate is decelerated, aligning with a negative valence. The entire segment’s query, "I hope you enjoyed yourself.", indicates potential regret, reinforcing perceptual cues of sadness.</td>
+      <td style="font-size:95%">Acoustic analysis reveals that F0 (pitch) and amplitude (volume) are notably reduced, while articulation rate is decelerated, aligning with a negative valence. The entire segment’s query  indicates potential regret, reinforcing perceptual cues of sadness: “I hope you enjoyed yourself.”</td>
+    </tr>
+        <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/emotion_datasetMEADM003audiodisgustedlevel_3001.wav"></audio></td>
+	  <td style="font-size:95%">Please take this dirty table cloth to the cleaners for me.</td>
+      <td style="font-size:95%">The core statement is that the speech has a negative emotional polarity with a medium intensity of disgust. The fast tempo and medium pitch suggest heightened emotional expressivity, but the low loudness indicates a restrained expression, balancing the overall intensity. The key emotional segment is in the early part, marked by an immediate reference to a displeasing incident. Additional descriptors like irritation and annoyance provide more context to the nuanced, somewhat controlled expression of disgust.</td>
+      <td style="font-size:95%">The core statement is that the speech has a negative emotional polarity with a medium intensity of disgust. The fast tempo and medium pitch suggest heightened emotional expressivity, but the low loudness indicates a restrained expression, balancing the overall intensity. The key emotional segment is in the early part, marked by an immediate reference to a displeasing incident. Additional descriptors like irritation and annoyance provide more context to the nuanced, somewhat controlled expression of disgust: "Please take this dirty table cloth to the cleaners for me."</td>
+    </tr>
+		
+        <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/SAVEEALLDC_f04.wav"></audio></td>
+	  <td style="font-size:95%">Call an ambulance for medical assistance.</td>
+      <td style="font-size:95%">Fear dominates this speech, showing high emotional intensity via high pitch, loud volume, and fast pace. The phrases like “ambulance” and “medical assistance,” highlights distress and urgency.</td>
+      <td style="font-size:95%">Fear dominates this speech, showing high emotional intensity via high pitch, loud volume, and fast pace. The phrases like “ambulance” and “medical assistance,” highlights distress and urgency: “Call an ambulance for medical assistance.”</td>
+    </tr>
+            <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/03-01-08-02-02-02-24.wav"></audio></td>
+	  <td style="font-size:95%">Dogs are sitting by the door!</td>
+      <td style="font-size:95%">The speaker's emotional tone is surprise, with a medium intensity. The speech rate is fast, but the volume is low, suggesting a moderate level of surprise or excitement. This emotional reaction is most prominent in the early and late part of the speech, possibly due to the observation of the dogs' position. Additional descriptors might include bewilderment or curiosity, indicating a mild, unexpected response.</td>
+      <td style="font-size:95%">The speaker's emotional tone is surprise, with a medium intensity. The speech rate is fast, but the volume is low, suggesting a moderate level of surprise or excitement. This emotional reaction is most prominent in the early and late part of the speech, possibly due to the observation of the dogs' position. Additional descriptors might include bewilderment or curiosity, indicating a mild, unexpected response: "Dogs are sitting by the door!"</td>
+    </tr>
+                <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/03-01-02-01-01-02-04.wav"></audio></td>
+	  <td style="font-size:95%">Kids are talking by the door.</td>
+      <td style="font-size:95%">The speech emotion can be described as calm, indicating a state of peacefulness. The emotional intensity is low, which typically does not involve high arousal or dramatic fluctuations in emotion. Considering the low pitch and low loudness, these contribute to a subdued expression, assuming a steady emotional tone throughout. Additional descriptors like "relaxed" or "serene" might also accurately capture the emotional nuance of the speech based on the attributes described.</td>
+      <td style="font-size:95%">The speech emotion can be described as calm, indicating a state of peacefulness. The emotional intensity is low, which typically does not involve high arousal or dramatic fluctuations in emotion. Considering the low pitch and low loudness, these contribute to a subdued expression, assuming a steady emotional tone throughout. Additional descriptors like "relaxed" or "serene" might also accurately capture the emotional nuance of the speech based on the attributes described: "Kids are talking by the door."</td>
+    </tr>
+		
+    <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/6836-76549-0028.wav"></audio></td>
+	  <td style="font-size:95%">I proceed to buffalo next morning, catching the first glimpse of that important seaport of the lakes, where fifteen miles across the bay, the wagon road is almost licked by the swashing waves, and entering the city over a misfit plank road.</td>
+      <td style="font-size:95%">(1) Emotion: Neutral; (2) Pitch: Steady; (3) Loudness: Normal; (4) Speech Rate: Normal; (5) Emotional Intensity: Moderate; (6) Key Segment: Imagery of "wagon road almost licked by the swashing waves"; (7) Core Content: Descriptive and factual tone, with a blend of enthusiasm and a hint of criticism about the journey to Buffalo.</td>
+      <td style="font-size:95%">(1) Emotion: Neutral; (2) Pitch: Steady; (3) Loudness: Normal; (4) Speech Rate: Normal; (5) Emotional Intensity: Moderate; (6) Key Segment: Imagery of "wagon road almost licked by the swashing waves"; (7) Core Content: Descriptive and factual tone, with a blend of enthusiasm and a hint of criticism about the journey to Buffalo. "I proceed to buffalo next morning, catching the first glimpse of that important seaport of the lakes, where fifteen miles across the bay, the wagon road is almost licked by the swashing waves, and entering the city over a misfit plank road."</td>
+    </tr>
+
+        <tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/1009_IEO_ANG_MD.wav"></audio></td>
+	  <td style="font-size:95%">It s eleven o'clock!</td>
+      <td style="font-size:95%">The speech carries a distinctly negative emotional tone, with high intensity. The most significant emotional expression is concentrated in the latter portion of the utterance, characterized by a marked increase in the speaker's affective delivery.</td>
+      <td style="font-size:95%">The speech carries a distinctly negative emotional tone, with high intensity. The most significant emotional expression is concentrated in the latter portion of the utterance, characterized by a marked increase in the speaker s affective delivery: “It s eleven o'clock!”</td>
+    </tr>
+		<tr>
+          <td style="text-align: center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_dataset/MEADM037audiocontemptlevel_1002.wav"></audio></td>
+	  <td style="font-size:95%">Don't ask me to carry an oily rag like that.</td>
+      <td style="font-size:95%">Acoustic analysis reveals F0 stability within normal pitch range alongside consistent amplitude (loudness). Speech rate aligns with typical norms, reinforcing medium-intensity contempt. The critical emotional marker lies in the middle portion at "an oily rag like that," where disdain peaks. Additional descriptors include frustration and disapproving undertones, emphasizing clear yet measured negative sentiment.</td>
+      <td style="font-size:95%">Acoustic analysis reveals F0 stability within normal pitch range alongside consistent amplitude (loudness). Speech rate aligns with typical norms, reinforcing medium-intensity contempt. The critical emotional marker lies in the middle portion at "an oily rag like that," where disdain peaks. Additional descriptors include frustration and disapproving undertones, emphasizing clear yet measured negative sentiment: "Don't ask me to carry an oily rag like that."</td>
+    </tr>
+    </tbody>
+</table>
+<!-- 
+<h2>3. Demo of Speech Emotion Captioning<a name="exp result"></a></h2>
+
+<table class="tg">
+  <thead>
+    <tr>
+      <th style="text-align: center; width: 100px;"><strong>Source Speech</strong></th>
+      <th style="text-align: center; width: 300px;"><strong>Model</strong></th>
+      <th style="text-align: center; width: 600px;"><strong>Generated Description</strong></th>
+      <th style="text-align: center; width: 600px;"><strong>Ground Truth</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:left">The angry affect is conveyed through attenuated intensity and a pause after 'I', followed by pitch elevation on 'only busy with' and increased loudness on 'accompanying you', producing a restrained yet resentful prosodic pattern.</td>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+    </tr>
+
+    <tr>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
+      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+    </tr>
+
+    <tr>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
+      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+    </tr>
+
+    <tr>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
+      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+    </tr>
+
+    <tr>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
+      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h2>4. Demo of Text Prompt-based Emotional Speech Synthesis / Emotional Instruction-to-Speech<a name="exp result"></a></h2>
+
+<table class="tg">
+  <thead>
+    <tr>
+      <th style="text-align: center; width: 600px;"><strong>Text Prompt / Instruction</strong></th>
+      <th style="text-align: center; width: 300px;"><strong>Model</strong></th>
+      <th style="text-align: center; width: 100px;"><strong>Generated Speech</strong></th>
+      <th style="text-align: center; width: 100px;"><strong>Ground Truth</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+
+        <tr>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+
+        <tr>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+
+        <tr>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+
+        <tr>
+      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center">Model Z</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model A</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model B</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model C</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model D</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Model E</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h3>Visualization of converted waveform.<a name="Visualization"></a></h3>
+<p> 
+  Naturalistic EVC relies on precise and context-aware prosodic manipulation. To this end, we further analyze by integrating the transcribed text of each utterance to interpret the resulting variations in pitch tracks and energy contours. This detailed visualization provides qualitative evidence of the contextual perception capability of ChameleonVoice, demonstrating how dynamic prosodic adjustments are localized and executed based on linguistic content.
+ </p>
+
+  <center><img src='fig/pitch_contour.png' width=400px></center>
+<br><br>
+<p> 
+To further illustrates the effectiveness of the proposed ChameleonVoice in transforming acoustic features across different emotions, speakers, and languages, we present Mel-spectrograms from a Chinese speaker (0009) and two English speakers (0013 and 0014), comparing the source spectrogram (neutral) with converted spectrogram (target emotion).
+ </p>
+   <center><img src='fig/energy_contour.png' width=400px></center> -->
+
+      <footer class="site-footer">
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+</body></html>
