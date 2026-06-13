@@ -118,7 +118,7 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
     </tr>
     </tbody>
 </table>
-<!-- 
+
 <h2>3. Demo of Speech Emotion Captioning<a name="exp result"></a></h2>
 
 <table class="tg">
@@ -132,144 +132,100 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:left">The angry affect is conveyed through attenuated intensity and a pause after 'I', followed by pitch elevation on 'only busy with' and increased loudness on 'accompanying you', producing a restrained yet resentful prosodic pattern.</td>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_sec/1008_ITS_HAP_XX.wav"></audio></td>
+      <td style="text-align: center">Qwen2-Audio (baseline)</td>
+      <td style="font-size:95%; text-align:left">The speech is delivered in a surprised mood with a medium level of intensity, in a normal pitch range, at a normal tempo, and has a high energy level. The salient emotional region is the final part of the speech segment.</td>
+      <td style="font-size:95%; text-align:left" rowspan="5">The expression "I think I've seen this before" in the speech has a positive emotional polarity, reflecting a familiar and pleasant recognition, typically associated with happiness. The emotional intensity is moderate, with a high pitch indicating excitement or joy, and a normal tempo and loudness suggesting that the happiness is not overpowering. The core emotional segment is the phrase itself, where the speaker's reflection on a past experience evokes nostalgia and contentment, reinforcing an overall happy and approachable demeanor.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:left">Expressing a feeling of happiness, accompanied by an excited tone.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:left">Speaking at a moderate speed, the female speaker conveys her enthusiasm with a standard pitch.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:left">A happy adult female with high pitch and normal volume speaks at a normal pace, expressing her excitement in an educational context.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:left">Example generated description 4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:left">The overall emotional tone of the speech is positive. The emotional intensity is moderate, with a high pitch suggesting joy or excitement, while the normal tempo and loudness indicate a controlled and non-overwhelming expression of happiness. The key emotional segment spans the entire utterance, as the phrase “I think I’ve seen this before” conveys a sense of familiar recognition and pleasant recall. The analysis indicates a calm yet positively engaged delivery.</td>
     </tr>
 
-    <tr>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
-      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+       <tr>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_sec/7594_81881_000045_000001.wav"></audio></td>
+      <td style="text-align: center">Qwen2-Audio (baseline)</td>
+      <td style="font-size:95%; text-align:left">The speech is neutral. No salient emotional region is detected, as the acoustic attributes remain stable throughout the speech and no significant emotional fluctuations are observed.</td>
+      <td style="font-size:95%; text-align:left" rowspan="5">This speech radiates positivity, driven by emotions of hope and inspiration. Its core impact lies in the central portion, which envisions a promising future. Supporting details include medium-level emotional intensity, ensuring a captivating yet balanced delivery that resonates with audiences through optimistic undertones.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:left">Expressing a neutral, factual tone with no emotional emphasis.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:left">With a regular pitch, the female speaker engages in conversation at a moderate speed, her energy level slightly subdued.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:left">Expressing natural emotion, a calm adult female with normal pitch and low volume speaks at a normal speed.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:left">Example generated description 4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+      <td style="text-align: center">Qwen2-Audio fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:left">The overall emotional tone of the speech is positive. The emotional intensity is medium, providing a balanced yet engaging expression. The key segment of emotion occurs in the middle-to-late part of the speech, which conveys a vision of a promising future. The overall analysis indicates an optimistic and uplifting delivery with a stable emotional flow.</td>
     </tr>
 
-    <tr>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
-      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+          <tr>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_sec/esd_surprise_0014_001448.wav"></audio></td>
+      <td style="text-align: center">Qwen2.5-Omni (baseline)</td>
+      <td style="font-size:95%; text-align:left">The speech emotion is surprise, with a medium level of emotional intensity. The pitch is high, consistent with the elevated intonation typically associated with surprise. The speech tempo is also high, indicating a relatively fast delivery. The energy level is high, reflected in increased loudness throughout.</td>
+      <td style="font-size:95%; text-align:left" rowspan="5">Acoustic analysis reveals F0 (pitch) is elevated, intensity is high, and speech rate is accelerated. The negative valence reflects shock/disbelief, with an late emotional peak indicating urgency. Confusion and alarm are perceptible, supported by heightened acoustic parameters.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:left">Expressing a sense of wonder and unexpected revelation.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:left">The man speaks with a high pitch, conversing at an high pace with standard energy.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:left">A happy youth with high pitch speaks at a normal speed and volume, expressing excitement.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:left">Example generated description 4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:left">Example generated description 5</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:left">(1) Emotion: Shock / Surprise (Negative Valence); (2) Pitch: High; (3) Loudness: High; (4) Speaking Speed: Fast; (5) Emotional Intensity: High; (6) Key Segment: Later Part; (7) Additional Descriptors: Confusion, Alarm detected via heightened acoustic cues.</td>
     </tr>
 
-    <tr>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
-      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
+           <tr>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_sec/esd_sad_0015_001365.wav"></audio></td>
+      <td style="text-align: center">Qwen2.5-Omni (baseline)</td>
+      <td style="font-size:95%; text-align:left">The overall emotional tone is negative, with a clear expression of sadness conveyed through the speech. The pitch level appears low, consistent with a subdued affective state. The speech tempo is likely to be normal or slightly slow. The energy level is low, matching the restrained and subdued nature of the speaker. The key segment of emotional expression occurs in the middle part of the speech.</td>
+      <td style="font-size:95%; text-align:left" rowspan="5">The overall emotional tone of the speech is negative. The emotional intensity is low, suggested by the low loudness and pitch, which aligns with the sadness. The key segment of emotional expression likely occurs in the middle-to-late part of the speech. The description hints at a sense of melancholy or resignation, potentially linked to the context of awaiting or discussing "Tom's answer," which might imply a disappointing or uncertain outcome, or perhaps anxiety.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:left">Example generated description 1</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:left">Conveying a sense of peacefulness and composure in the tone.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:left">Example generated description 2</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:left">A female speaker communicates with a natural pitch, delivering her speech at an average pace and low energy level.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:left">Example generated description 3</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:left">An adult female speaks in a reflective manner, characterized by low pitch and low loudness.</td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:left">Example generated description 4</td>
+      <td style="text-align: center">Qwen2.5-Omni fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:left">The speech conveys a negative emotional tone with low intensity, reflected in its low pitch and low loudness. The key emotional segment appears in the middle-to-late portion of the utterance, where the main emotional content is expressed. The acoustic parameters, including low pitch, low loudness, and a subdued delivery style, contribute to an sense of sadness and emotional low arousal.</td>
     </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:left">Example generated description 5</td>
-    </tr>
-
-    <tr>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000001.wav"></audio></td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:left">The appreciative meaning is underscored by overall rising intonation, sharp pitch accents on 'indeed' and 'very,' and a light, flowing prosody on 'beautiful,' yielding a relaxed and cheerful affect.</td>
-      <td style="font-size:95%; text-align:left" rowspan="6">打远一看，它们的确很是美丽。(English: At a distance, they indeed appear very beautiful.)</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:left">Example generated description 1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:left">Example generated description 2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:left">Example generated description 3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:left">Example generated description 4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:left">Example generated description 5</td>
-    </tr>
-
   </tbody>
 </table>
 
-<h2>4. Demo of Text Prompt-based Emotional Speech Synthesis / Emotional Instruction-to-Speech<a name="exp result"></a></h2>
+<!-- <h2>4. Demo of Text Prompt-based Emotional Speech Synthesis / Emotional Instruction-to-Speech<a name="exp result"></a></h2>
 
 <table class="tg">
   <thead>
@@ -430,6 +386,7 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
 To further illustrates the effectiveness of the proposed ChameleonVoice in transforming acoustic features across different emotions, speakers, and languages, we present Mel-spectrograms from a Chinese speaker (0009) and two English speakers (0013 and 0014), comparing the source spectrogram (neutral) with converted spectrogram (target emotion).
  </p>
    <center><img src='fig/energy_contour.png' width=400px></center> -->
+
 
       <footer class="site-footer">
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
