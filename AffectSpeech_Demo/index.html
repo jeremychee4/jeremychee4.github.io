@@ -127,7 +127,7 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
       <th style="text-align: center; width: 100px;"><strong>Source Speech</strong></th>
       <th style="text-align: center; width: 300px;"><strong>Model</strong></th>
       <th style="text-align: center; width: 600px;"><strong>Generated Description</strong></th>
-      <th style="text-align: center; width: 600px;"><strong>Ground Truth</strong></th>
+      <th style="text-align: center; width: 600px;"><strong>Annotation (random text style)</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -225,7 +225,7 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
   </tbody>
 </table>
 
-<!-- <h2>4. Demo of Text Prompt-based Emotional Speech Synthesis / Emotional Instruction-to-Speech<a name="exp result"></a></h2>
+<h2>4. Demo of Text Prompt-based Emotional Speech Synthesis / Emotional Instruction-to-Speech<a name="exp result"></a></h2>
 
 <table class="tg">
   <thead>
@@ -233,161 +233,112 @@ Experimental results on speech emotion captioning and synthesis demonstrate that
       <th style="text-align: center; width: 600px;"><strong>Text Prompt / Instruction</strong></th>
       <th style="text-align: center; width: 300px;"><strong>Model</strong></th>
       <th style="text-align: center; width: 100px;"><strong>Generated Speech</strong></th>
-      <th style="text-align: center; width: 100px;"><strong>Ground Truth</strong></th>
+      <th style="text-align: center; width: 100px;"><strong>Human recording</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="font-size:95%; text-align:left" rowspan="5">The overall emotional tone is negative, characterized by a confrontational and accusatory sentiment. The speaker's high loudness and low pitch contribute to a serious and intense delivery, with the key emotional expression occurring in the early part of the statement. The emotional intensity is high, and the excerpt can be described as stern and confrontational: "No, sir; you was going to rob peter to stand off Paul."</td>
+      <td style="text-align: center">VoxInstruct (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/voxinstruct_253526.wav"></audio></td>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/gt_7688_112187_000039_000005.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/emovoice_253526.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/textrolspeech_253526.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/speechcraft_253526.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/affectspeech_253526.wav"></audio></td>
     </tr>
 
-        <tr>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+         <tr>
+      <td style="font-size:95%; text-align:left" rowspan="5">The speech maintains a neutral tone with a surprising twist, conveyed through medium emotional intensity. In the latter segment, an unexpected revelation emerges, amplified by high pitch. The normal rate and loudness ensure clarity without excessive dramatization, balancing the element of astonishment effectively: "He might call it, for example."</td>
+      <td style="text-align: center">VoxInstruct (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/voxinstruct_253521.wav"></audio></td>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/gt_0018_001515.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/emovoice_253521.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/textrolspeech_253521.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/speechcraft_253521.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/affectspeech_253521.wav"></audio></td>
     </tr>
 
-        <tr>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+         <tr>
+      <td style="font-size:95%; text-align:left" rowspan="5">The audio exhibits a neutral emotional tone with minimal intensity. Throughout the speech, emotional expression remains consistent without concentrating in any particular segment. The speaker's delivery is measured and composed, avoiding noticeable emotional fluctuations, maintaining steady composure from start to finish: "Tacitus saith, Livia sorted well with the arts of her husband, and dissimulation of her son; attributing arts or policy to Augustus, and dissimulation to Tiberius."</td>
+      <td style="text-align: center">VoxInstruct (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/voxinstruct_253527.wav"></audio></td>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/gt_764_132272_000008_000000.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/emovoice_253527.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/textrolspeech_253527.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/speechcraft_253527.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/affectspeech_253527.wav"></audio></td>
     </tr>
 
-        <tr>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+          <tr>
+      <td style="font-size:95%; text-align:left" rowspan="5">The speech exudes a positive emotional polarity, characterized by a happy emotion. The moderate emotional intensity is conveyed through a normal tempo and loudness, indicating enthusiasm without excessive excitement. The whole utterance encapsulates the uplifted sentiment and excitement, setting a hopeful and positive tone for the message: "The revolution now under way in materials handling makes this much easier."</td>
+      <td style="text-align: center">VoxInstruct (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/voxinstruct_253520.wav"></audio></td>
+      <td style="text-align: center" rowspan="5"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/gt_030.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on EmoVoice-DB (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/emovoice_253520.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on TextrolSpeech (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/textrolspeech_253520.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on SpeechCraft (baseline)</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/speechcraft_253520.wav"></audio></td>
     </tr>
     <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
+      <td style="text-align: center">VoxInstruct fine-tuned on AffectSpeech</td>
+      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/demo_ess/affectspeech_253520.wav"></audio></td>
     </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-
-        <tr>
-      <td style="font-size:95%; text-align:left" rowspan="6">周末的我，只忙着陪你。(English: On the weekend, I'm only busy with accompanying you.)</td>
-      <td style="text-align: center">Model Z</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-      <td style="text-align: center" rowspan="6"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model A</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model B</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model C</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model D</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Model E</td>
-      <td style="font-size:95%; text-align:center"><audio style="width: 150px;" controls="" preload="none" src="samples/source/0009_000013.wav"></audio></td>
-    </tr>
-
   </tbody>
 </table>
 
-<h3>Visualization of converted waveform.<a name="Visualization"></a></h3>
+<h3>Visualization of Pitch and Energy Contours.<a name="Visualization"></a></h3>
 <p> 
-  Naturalistic EVC relies on precise and context-aware prosodic manipulation. To this end, we further analyze by integrating the transcribed text of each utterance to interpret the resulting variations in pitch tracks and energy contours. This detailed visualization provides qualitative evidence of the contextual perception capability of ChameleonVoice, demonstrating how dynamic prosodic adjustments are localized and executed based on linguistic content.
+  To further substantiate the framework's capacity for fine-grained, localized prosodic control, we conduct a qualitative manipulation analysis by dynamically changing the designated prominent segment instruction within identical text sequences (from the beginning to middle, then the end of an utterance, lastly for entire). The resulting localized acoustic variations are illustrated via this figure. As observed in the contours, moving the prompt instruction successfully drives corresponding localized pitch excursions and intensity peaks to the precisely targeted time intervals. This empirical behavior provides evidence that the model does not merely perform global style matching, but has mastered instruction-driven and  time-varying paralinguistic synthesis.
  </p>
 
-  <center><img src='fig/pitch_contour.png' width=400px></center>
-<br><br>
-<p> 
-To further illustrates the effectiveness of the proposed ChameleonVoice in transforming acoustic features across different emotions, speakers, and languages, we present Mel-spectrograms from a Chinese speaker (0009) and two English speakers (0013 and 0014), comparing the source spectrogram (neutral) with converted spectrogram (target emotion).
- </p>
-   <center><img src='fig/energy_contour.png' width=400px></center> -->
+  <center><img src='fig/contours.jpg' width=960px></center>
 
-
+   
       <footer class="site-footer">
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
       </footer>
